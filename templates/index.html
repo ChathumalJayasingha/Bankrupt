@@ -3,8 +3,472 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body{background-color: pink; height:100vh; display:flex;justify-content: center;align-items: center;overflow: hidden;}
+.illu{
+  width:40vw;
+  max-width:225px;
+  height:80vw;
+  max-height:420px;
+  background-color: pink;
+  position: relative;
+}
+*{box-sizing:border-box}
+
+.info{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size:3vw;
+  @media screen and (min-width: 520px) {
+    font-size:1em;
+  }
+}
+
+.glas{
+  position:absolute;
+  background-color: #efefef;
+  height:40vw;
+  max-height:225px;
+  max-width:225px;
+  border-radius:50%;
+  width:40vw;
+  bottom:29.5vw;
+  @media screen and (min-width: 520px) {
+    bottom:170px;
+  }
+  .line{
+    position: absolute;
+    left:48%;
+    height:40vw;
+    width:1vw;
+    background-color: grey;
+    max-height:300px;
+    max-width:5px;
+  }
+  .hat{
+    z-index: 2;
+    background-color: red;
+    //border-top-left-radius:100%;
+    //border-top-right-radius:100%;
+    border-radius:30px;
+    width:25vw;
+    max-width:150px;
+    left:6.9vw;
+    height:8vw;
+    position: absolute;
+    top:0vw;
+    max-height:40px;
+    @media screen and (min-width: 520px) {
+      left:38px;
+    }
+    &:before{
+      content:"";
+      position:absolute;
+      background-color: red;
+      top:-2vw;
+      height:5vw;
+      width:7vw;
+      left:9vw;
+      border-radius:30%;
+      max-height:15px;
+      max-width:30px;
+      @media screen and (min-width: 520px) {
+        top:-7.5px;
+        left:60px;
+      }
+    }
+    &:after{
+      content:"";
+      position:absolute;
+      background-color: red;
+      bottom:0%;
+      width:120%;
+      height:4vw;
+      left:-10%;
+      border-radius:20vw;
+      max-height:20px;
+    }
+  }
+}
+
+.corp {
+  border-bottom: 32vw solid red;
+  border-left: 5vw solid transparent;
+  border-right: 5vw solid transparent;
+  height: 0;
+  width: 90%;
+  left:5%;
+  position: absolute;
+  bottom:2.5vw;
+  @media screen and (min-width: 520px) {
+    border-bottom: 180px solid red;
+    border-left: 28px solid transparent;
+    border-right: 28px solid transparent;
+    bottom:16.8px;
+  }
+  .corp__open{
+    position: absolute;
+    top:24vw;
+    background-color: darkred;
+    width:30%;
+    height:7vw;
+    max-height:50px;
+    border-top-left-radius:30px;
+    border-top-right-radius:30px;
+    left:34%;
+    @media screen and (min-width: 520px) {
+      top:140px;
+    }
+  }
+  .lock{
+    position: absolute;
+    top:0;
+    z-index: 2;
+    background-color: grey;
+    width:60%;
+    height:22vw;
+    max-height:120px;
+    left:20%;
+    .lock__circle{
+      background-color: #585858;
+      width:7vw;
+      height:7vw;
+      max-height:45px;
+      max-width:45px;
+      position: absolute;
+      border-radius:50%;
+      left:4vw;
+      top:3vw;
+      border: #585858 solid 2px;
+      box-sizing:content-box;
+      &:after{
+        display: block;
+        position: absolute;
+        content:"";
+        background-color: darkgrey;
+        width:7vw;
+        height:3.5vw;
+        max-height:22.5px;
+        max-width:45px;
+        bottom:-1px;
+        border-bottom-left-radius:30px;
+        border-bottom-right-radius:30px;
+        z-index: 8;
+      }
+      @media screen and (min-width: 520px) {
+        left:18px;
+        border: #585858 solid 5px;
+        top:18px;
+      }
+
+    }
+    .lock__button_bg{
+      background-color: grey;
+      width:10vw;
+      height:7vw;
+      max-height:20px;
+      position: absolute;
+      left:2.5vw;
+      top:14vw;
+      z-index: 3;
+      max-width:40px;
+      max-height:40px;
+      transition:all 1s;
+      @media screen and (min-width: 520px) {
+        left:25px;
+        top:74px;
+      }
+    }
+    .lock__button{
+      background-color: darkgrey;
+      width:10vw;
+      z-index: 3;
+      height:2vw;
+      max-height:20px;
+      position: absolute;
+      border-radius:2vw;
+      left:2.9vw;
+      top:14vw;
+      max-width:40px;
+      max-height:10px;
+      transform-origin:center center;
+      transition:all 1s;
+      @media screen and (min-width: 520px) {
+        left:25px;
+        top:90px;
+      }
+      &.active{
+        transform:rotate(360deg);
+      }
+    }
+    .coint{
+      left:3px;
+      bottom:3px;
+      animation:drop_coint 1s 1s forwards;
+      @keyframes drop_coint{
+        from{
+          transform:translateY(0px) scale(1);
+        }
+        to{
+          transform:translateY(10px) scale(0.5);
+        }
+      }
+    }
+  }
+}
+.bottom{
+  position:absolute;
+  bottom:0vw;
+  border-radius: 7vw;
+  width:100%;
+  height:4vw;
+  max-height:20px;
+  background-color: red;
+}
+
+.container{
+  position: relative;
+  width:30vw;
+  left:5vw;
+  height:30vw;
+  top:5vw;
+  max-width:160px;
+  max-height:160px;
+  @media screen and (min-width: 520px) {
+    left:35px;
+    top:37px;
+  }
+  div{
+    border-radius:50%;
+    //mix-blend-mode: difference;
+    position:absolute;
+  }
+}
+.circ{
+  width: 4.5vw;
+  height:4.5vw;
+  max-width:25px;
+  max-height:25px;
+  left:0%;
+  bottom:85%;
+  &.out{
+    transform: translate3d(0px, 0px, 0px)!important;
+    left:41%;
+    bottom:0;
+    animation:drop 1s forwards;
+    z-index:2;
+    @keyframes drop {
+      to {
+        bottom:-31.5vw;
+
+      }
+    }
+    @media screen and (min-width: 520px) {
+      @keyframes drop {
+        to {
+          bottom:-180px;
+        }
+      }
+    }
+  }
+}
+
+.circ--1,.circ--6,.circ--11,.circ--16  {
+background-color:#E14155;
+}
+
+.circ--2,.circ--7,.circ--12,.circ--17  {
+background-color:#48A5C8;
+}
+.circ--3,.circ--8,.circ--13,.circ--18 {
+background-color:#8FC37C;
+}
+.circ--4,.circ--9,.circ--14,.circ--19 {
+background-color:yellow;
+}
+.circ--5,.circ--10,.circ--15,.circ--20 {
+background-color:#EEB858;
+}
+
+.coint{
+  position:absolute;
+  z-index: 1;
+  bottom:0;
+  right:-50%;
+  height:6vw;
+  width:6vw;
+  max-width:40px;
+  max-height:40px;
+  background-color: #D0B070;
+  border-radius:50%;
+  border: 1vw solid ;
+  color:#8E6A23;
+  font-weight: bold;
+  font-size: 3.5vw;
+  text-align: center;
+  font-family: sans-serif;
+  @media screen and (min-width: 520px) {
+    font-size: 1.5em;
+    border: 5px solid ;
+  }
+}
+
+.info--coint{
+  position: absolute;
+  bottom:15vw;
+  right:-50%;
+  width:20vw;
+  max-width:100px;
+  @media screen and (min-width: 520px) {
+    bottom:100px;
+  }
+}
+
+    </style>
 </head>
 <body>
-    Bankrupt Application
+    <div class="illu">
+  <p class="info info--coint">Bankrupt Application</p>
+  <div id="div1" class="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div draggable="true" ondragstart="drag(event)" id="drag1" class="coint">1</div>
+  </div>
+
+  <div class="glas">
+    <div class="hat"></div>
+    <div class="line"></div>
+    <div class="container">
+      <div class='circ circ--1'></div>
+      <div class='circ circ--2'></div>
+      <div class='circ circ--3'></div>
+      <div class='circ circ--4'></div>
+      <div class='circ circ--5'></div>
+      <div class='circ circ--6'></div>
+      <div class='circ circ--7'></div>
+      <div class='circ circ--8'></div>
+      <div class='circ circ--9'></div>
+      <div class='circ circ--10'></div>
+      <div class='circ circ--11'></div>
+      <div class='circ circ--12'></div>
+      <div class='circ circ--13'></div>
+      <div class='circ circ--14'></div>
+      <div class='circ circ--15'></div>
+      <div class='circ circ--16'></div>
+      <div class='circ circ--17'></div>
+      <div class='circ circ--18'></div>
+      <div class='circ circ--19'></div>
+      <div class='circ circ--20'></div>
+    </div>
+  </div>
+  <div class="corp">
+    <div class="lock">
+      <div id="div2" class="lock__circle" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="lock__button_bg"></div>
+      <div class="lock__button"></div>
+    </div>
+    <div class="corp__open"></div>
+  </div>
+  <div class="bottom"></div>
+</div>
+
 </body>
+
+<script >
+    // Inspired by
+//https://codepen.io/cooljockey/pen/uyeHz?editors=0010
+
+var circ = document.querySelectorAll('.container div');
+var box = document.querySelector('.container');
+var newq;
+let h,w,nh,nw,s;
+var infoBoxCoint = document.querySelector(".info--coint");
+
+var button = document.querySelector('.lock__button');
+
+
+function newPosition(){
+  h = box.offsetHeight - 10;
+  w = box.offsetWidth - 10;
+  nh = Math.floor(Math.random() * h);
+  nw = Math.floor(Math.random() * w);
+  s = Math.floor(Math.random()*700) + 300
+  return [nh,nw,s];
+}
+
+setInterval(() => {
+  for (var i = 0; i < circ.length; i++) {
+      newq = newPosition();
+    circ[i].style.transform =`translate3d(${newq[0]}px, ${newq[1]}px, 0px)`;
+
+    circ[i].style.transition =`all ${newq[2] / 1000}s`;
+  }
+
+},500);
+
+setInterval(() => {
+  for (var i = 0; i < circ.length; i++) {
+      newq = newPosition();
+    circ[i].style.transform =`translate3d(${newq[0]}px, ${newq[1]}px, 0px)`;
+
+    circ[i].style.transition =`all ${newq[2] / 1000}s`;
+  }
+
+},700);
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+let counter = 0;
+
+
+  function drop(ev) {
+    if (counter<10){
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      ev.target.appendChild(document.getElementById(data));
+      infoBoxCoint.innerHTML = "Yeah.";
+      var cointPlace = document.querySelector('.div1');
+      var newDiv = document.createElement("div");
+
+      console.log(counter);
+      newDiv.classList.add("coint");
+      newDiv.innerHTML = "1";
+      newDiv.setAttribute("id", "drag1");
+      newDiv.setAttribute("draggable", "true");
+      newDiv.setAttribute("ondragstart", "drag(event)");
+      cointPlace.appendChild(newDiv);
+
+      setTimeout(function(){
+        button.classList.toggle('active');
+        document.querySelector('.container div').classList.add('out');
+        setTimeout(function(){
+             document.querySelector('.container div').remove();
+             infoBoxCoint.innerHTML = "Do you want an other bubblegum?";
+             if (counter===9){
+                infoBoxCoint.innerHTML = "You are bankrupt.</br>Sorry";
+              }
+         }, 2000);
+      }, 2000);
+
+    }
+    if (counter===9){
+      setTimeout(function(){
+       //infoBoxCoint.innerHTML = "You are bankrupt.</br>Sorry";
+        newDiv.style.display = "none";
+      }, 2000);
+    }
+    counter = counter + 1;
+    console.log(counter);
+ ;}
+
+
+
+
+
+
+</script>
 </html>
